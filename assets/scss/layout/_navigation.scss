@@ -1,0 +1,62 @@
+@use '../util' as u;
+
+$bg-arcoiris: #f00, #fc0, #ff0, #0f0, #44f, #00f, #8304a3;
+
+.nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: u.$nav-height;
+    background-color: u.$bg-terciary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 999;
+
+    &__photo {
+        width: 60px;
+        height: 60px;
+        overflow: hidden;
+        border-radius: 50%;
+        cursor: pointer;
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to right, $bg-arcoiris);
+    }
+
+    &__brand {
+        color: u.$text-primary;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        font-weight: 900;
+        letter-spacing: 5px;
+    }
+
+    &__list {
+        display: flex;
+        gap: 2rem;
+        
+        .nav__item {
+            .nav__link {
+                color: u.$text-primary;
+                font-size: 1.1rem;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
