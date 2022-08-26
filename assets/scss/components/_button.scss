@@ -1,0 +1,17 @@
+@use '../util' as u;
+
+.button {
+    padding: 1rem 5rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &--primary {
+        background-color: u.$bg-main;
+        color: u.$text-primary;
+
+        &:hover {
+            background-color: darken(u.$bg-main, 10);
+        }
+    }
+}
