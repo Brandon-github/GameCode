@@ -2,27 +2,20 @@
 
 class Connection 
 {
-    private $host;
-    private $username;
-    private $password;
-    private $database;
-    private $connection;
+    private static $host = "localhost";
+    private static $username = "root";
+    private static $password = "";
+    private static $database = "gameCode";
 
-    public function __construct()
-    {
-        $this->host = "localhost";
-        $this->username = "root";
-        $this->password = "";
-        $this->database = "gameCode";
-    }
+    private static $connection;
 
-    public function connect()
+    public static function connect()
     {
         try 
         {
-            $this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->database."", $this->username, $this->password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->connection;
+            self::$connection = new PDO("mysql:host=".self::$host.";dbname=".self::$database."", self::$username, self::$password);
+            self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return self::$connection;
         } 
         catch (PDOException $e)
         {
