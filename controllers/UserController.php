@@ -4,19 +4,13 @@ require './config/Connection.php';
 
 class UserController 
 {
-    private $connection;
 
-    public function __construct()
-    {
-        $this->connection = new Connection();
-    }
-
-    public function getAll()
+    public static function getAll()
     {   
         try 
         {
             $sql = "SELECT id, firstname, lastname, username, password, photo FROM users";
-            $response = $this->connection->connect()->prepare($sql);
+            $response = Connection::connect()->prepare($sql);
             $response->execute();
 
             $data = $response->fetchAll();
@@ -28,12 +22,12 @@ class UserController
         }
     }
 
-    public function getById($id)
+    public static function getById($id)
     {
         try 
         {
             $sql = "SELECT firstname, lastname, username, password, photo FROM users WHERE id = $id";
-            $response = $this->connection->connect()->prepare($sql);
+            $response = Connection::connect()->prepare($sql);
             $response->execute();
             
             $data = $response->fetch();
@@ -45,12 +39,12 @@ class UserController
         }
     }
 
-    public function create($user)
+    public static function create($user)
     {
         try 
         {
             $sql = "INSERT INTO users(firstname, lastname, username, password, photo) VALUES('".$user["firstname"]."', '".$user["lastname"]."', '".$user["username"]."', '".$user["password"]."', '".$user["photo"]."')";
-            $response = $this->connection->connect();
+            $response = Connection::connect();
             $response->exec($sql);
         }
         catch (PDOException $e)
