@@ -15,6 +15,19 @@ ALTER TABLE users
     MODIFY id INT NOT NULL AUTO_INCREMENT,
     ADD PRIMARY KEY(id);
 
+CREATE TABLE games(
+    id INT NOT NULL,
+    name VARCHAR(90) NOT NULL,
+    description NOT NULL,
+    id_user INT NOT NULL,
+    created_at DATE NOT NULL
+);
+
+ALTER TABLE games
+    MODIFY id INT NOT NULL AUTO_INCREMENT,
+    ADD PRIMARY KEY(id),
+    ADD FOREIGN KEY(id_user) REFERENCES users(id); 
+
 -- Examples and test data
 INSERT INTO users(firstname, lastname, username, password, photo) 
     VALUES ("Brandon", "Alexis", "lox", "lox12345", "foto.jgp");
