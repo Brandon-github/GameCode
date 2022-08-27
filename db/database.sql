@@ -18,7 +18,7 @@ ALTER TABLE users
 CREATE TABLE games(
     id INT NOT NULL,
     name VARCHAR(90) NOT NULL,
-    description NOT NULL,
+    description VARCHAR(200) NOT NULL,
     id_user INT NOT NULL,
     created_at DATE NOT NULL
 );
