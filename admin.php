@@ -12,10 +12,8 @@ if (!$_SESSION["login"])
     header("location: login.php");
 }
 
-$userController = new UserController();
-
 $id = $_SESSION["id"];
-$data = $userController->getById($id);
+$data = UserController::getById($id);
 
 ?>
 <?php include_once './layout/partials/head.php' ?>

@@ -16,9 +16,7 @@ if ($_POST) {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $userController = new UserController();
-
-        foreach ($userController->getAll() as $user)
+        foreach (UserController::getAll() as $user)
         {
             if ($user["username"] == $username && $user["password"] == $password)
             {
