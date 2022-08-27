@@ -52,4 +52,18 @@ class UserController
             print($e->getMessage()."\n".$e);
         }
     }
+
+    public static function update($id, $data)
+    {
+        try 
+        {
+            $sql = "UPDATE users SET firstname = '".$data['firstname']."', lastname = '".$data['lastname']."', username = '".$data['username']."', password = '".$data['password']."', photo = '".$data['photo']."' WHERE id = $id";
+            $response = Connection::connect();
+            $response->exec($sql);
+        }
+        catch (PDOException $e)
+        {
+            print($e->getMessage()."\n".$e);
+        }
+    }
 }
